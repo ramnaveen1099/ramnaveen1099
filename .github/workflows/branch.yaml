@@ -37,7 +37,7 @@ jobs:
            )
            git clone "https://api.github.com/repos/ramnaveen1099/"$Repo_Name".git"
 
-           $commit_id= git show --no-patch --no-notes --pretty='%H' @
+           $commit_id= "git show --no-patch --no-notes --pretty='%H' @"
            return $commit_id
           }
 
