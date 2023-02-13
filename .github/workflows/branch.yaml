@@ -71,7 +71,7 @@ jobs:
            }
 
            $Parameters = @{
-              Method = "POST"
+              Method = "Post"
               Uri =  "https://api.github.com/repos/ramnaveen1099/"+$Repo_Name+"/git/refs"
               Body = ($body | ConvertTo-Json)
               ContentType = "application/json"
