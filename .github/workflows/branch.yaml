@@ -46,8 +46,8 @@ jobs:
           {
            param(
            [string]$Repo_Name,
-           [string]$Branch_Name,
-           [string]$commit_id
+           [string]$Branch_Name
+           
            )
            Write-Host "Creating branch name ::$Branch_Name"
            $token = ConvertTo-SecureString $env:Token -AsPlainText -Force
@@ -95,7 +95,7 @@ jobs:
               $Repo_Name=$($csvData.Repo_Name).trim()
               $Branch_Name=$($csvData.Branch_Name).trim()
               $id= getcommit_id -Repo_Name $Repo_Name
-              $branch= create_branch -Repo_Name $Repo_Name -Branch_Name $Branch_Name -commit_id $commit_id
+              $branch= create_branch -Repo_Name $Repo_Name -Branch_Name $Branch_Name -commit_id $id
             }
             }
 
