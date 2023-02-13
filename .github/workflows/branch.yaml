@@ -1,5 +1,15 @@
 name: Multi-branch-creation
 run-name: ${{ github.actor }} is executing Pipeline
+on:
+  workflow_dispatch:
+    inputs:
+      Branchname:
+        description: 'Select Branch'
+        required: true
+        default: 'master'
+        type: choice
+        options:
+        - master
 jobs:
   Multi-Branch-Creation:
     runs-on: windows-2019
