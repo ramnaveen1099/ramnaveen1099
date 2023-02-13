@@ -75,9 +75,9 @@ jobs:
               Uri =  "https://api.github.com/repos/ramnaveen1099/"+$Repo_Name+"/git/refs"
               Body = ($body | ConvertTo-Json)
               ContentType = "application/json"
-              Authentication= "Bearer $token" 
+              Token= $token
           }
-          $response = Invoke-RestMethod @Parameters -SkipHttpErrorCheck -StatusCodeVariable "scv"
+          $response = Invoke-RestMethod @Parameters -Authentication Bearer -SkipHttpErrorCheck -StatusCodeVariable "scv"
           Write-verbose "Response :: $($response | ConvertTo-Json )" -Verbose
           Write-verbose "Creating branch:- $Branch_Name Response Code :: $scv" -Verbose
           
