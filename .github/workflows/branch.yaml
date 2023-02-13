@@ -55,7 +55,7 @@ jobs:
            $tag=$Branch_tag[0]
            Write-Host $tag
 
-           if($tag eq 'feature')
+           if($tag -eq 'feature')
            {
              body = @{
                "ref":"ref/heads/$Branch_Name",
