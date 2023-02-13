@@ -37,7 +37,7 @@ jobs:
            )
            git clone https://github.com/ramnaveen1099/$Repo_Name.git
 
-           $commit_id= git show --no-patch --no-notes --pretty='%H' @
+           $commit_id= git show --no-patch --no-notes --pretty='%H'
            Write-Host "Commitid: $commit_id"
            return $commit_id
           }
