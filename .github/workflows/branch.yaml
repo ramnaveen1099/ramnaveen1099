@@ -58,14 +58,14 @@ jobs:
            if($tag -eq 'feature')
            {
              body = @{
-               ref="ref/heads/$Branch_Name",
+               ref="ref/heads/$Branch_Name"
                sha=$commit_id
              }
 
            }
            else{
              body = @{
-               ref="refs/heads/$Branch_Name",
+               ref="refs/heads/$Branch_Name"
                sha=$commit_id
              }
            }
