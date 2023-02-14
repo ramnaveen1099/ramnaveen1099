@@ -36,7 +36,7 @@ jobs:
             [string]$Repo_Name
            )
            git clone https://github.com/ramnaveen1099/$Repo_Name.git
-
+           CD "$Repo_Name"
            $commit_id= git show --no-patch --no-notes --pretty='%H'
            Write-Host "Commitid: $commit_id"
            return $commit_id
@@ -58,7 +58,7 @@ jobs:
            if($tag -eq 'feature')
            {
              $body = @{
-               ref="ref/heads/$Branch_Name"
+               ref="refs/heads/$Branch_Name"
                sha=$commit_id
              }
 
