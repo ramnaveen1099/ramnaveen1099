@@ -24,9 +24,9 @@ jobs:
       - name: Gettin Credentials
         shell: pwsh
         env:
-          username: ${{ secrets.username }}
+          Token: ${{ secrets.Branch_Creation_Token }}
         run: |
-          "username=$env:username" >> $env:GITHUB_ENV
+          "Token=$env:Branch_Creation_Token" >> $env:GITHUB_ENV
        
       - name: Performing Branch deletion   
         shell: pwsh
@@ -39,7 +39,7 @@ jobs:
            [string]$Branch_Name
            )
            Write-Host "Deleting branch name ::$Branch_Name"
-           $username = ConvertTo-SecureString $env:username -AsPlainText -Force
+           $token = ConvertTo-SecureString $env:Branch_Creation_Token -AsPlainText -Force
            $Branch_tag=$Branch_Name -split"/"
            $tag=$Branch_tag[0]
            Write-Host $tag
@@ -47,13 +47,12 @@ jobs:
 
            $Parameters = @{
               Method = "Delete"
-              Uri =  "https://api.github.com/repos/"+$Repo_Name+"/git/refs/heads"+$Branch_Name
-              username= $username
+              Uri =  "https://api.github.com/repos/ramnaveen1099/"+$Repo_Name+"/git/refs/heads/"+$Branch_Name
+              Token= $token
           }
-          $response = Invoke-WebRequest $Parameters -SkipHttpErrorCheck -StatusCodeVariable "scv"
+          $response = Invoke-RestMethod @Parameters -Authentication Bearer -SkipHttpErrorCheck -StatusCodeVariable "scv"
           Write-verbose "Response :: $($response | ConvertTo-Json )" -Verbose
           Write-verbose "Deleting branch:- $Branch_Name Response Code :: $scv" -Verbose
-          
           
           }
           $filePath= 'Branch_Deletions/inputs.csv'
