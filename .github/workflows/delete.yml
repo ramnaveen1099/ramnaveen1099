@@ -26,7 +26,7 @@ jobs:
         env:
           Token: ${{ secrets.Demo }}
         run: |
-          "Token=$env:Demo" >> $env:GITHUB_ENV
+          "Token=$env:Token" >> $env:GITHUB_ENV
        
       - name: Performing Branch deletion   
         shell: pwsh
