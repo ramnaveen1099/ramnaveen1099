@@ -11,7 +11,7 @@ on:
         options:
         - master
 jobs:
-  Multi-Branch-Creation:
+  Branch-Deletion:
     runs-on: windows-2019
     steps:
       - name: Cloning Input File
