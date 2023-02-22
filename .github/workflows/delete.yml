@@ -24,9 +24,9 @@ jobs:
       - name: Gettin Credentials
         shell: pwsh
         env:
-          Token: ${{ secrets.Branch_Creation_Token }}
+          Token: ${{ secrets.Demo }}
         run: |
-          "Token=$env:Branch_Creation_Token" >> $env:GITHUB_ENV
+          "Token=$env:Demo" >> $env:GITHUB_ENV
        
       - name: Performing Branch deletion   
         shell: pwsh
@@ -39,7 +39,7 @@ jobs:
            [string]$Branch_Name
            )
            Write-Host "Deleting branch name ::$Branch_Name"
-           $token = ConvertTo-SecureString $env:Branch_Creation_Token -AsPlainText -Force
+           $token = ConvertTo-SecureString $env:Token -AsPlainText -Force
            $Branch_tag=$Branch_Name -split"/"
            $tag=$Branch_tag[0]
            Write-Host $tag
