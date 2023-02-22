@@ -36,7 +36,7 @@ jobs:
           {
            param(
            [string]$Repo_Name,
-           [string]$Branch_Name,
+           [string]$Branch_Name
            )
            Write-Host "Deleting branch name ::$Branch_Name"
            $username = ConvertTo-SecureString $env:username -AsPlainText -Force
