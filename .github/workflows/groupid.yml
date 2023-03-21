@@ -1,0 +1,63 @@
+name: GroupId_Updations
+run-name: ${{ github.actor }} is executing Pipeline
+on:
+  workflow_dispatch:
+    inputs:
+       Branchname:
+         description: 'Select Branch'
+         required: true
+         default: 'master'
+         type: choice
+         options:
+         - master
+       GroupId:
+         description: 'Provide Group Id'
+         required: true
+       Action:
+         description: 'Provide the type of action -> Add/Remove'
+         required: true  
+jobs:
+    GroupId_Updations:
+        runs-on: windows-latest
+        steps:
+          - name: Checking out repo
+            uses: actions/checkout@v3
+          - run: |
+              echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+              echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+              echo "🖥️ The Workspace ${{ github.workspace }} is now ready." 
+          - run: tree /f ${{ github.workspace }}
+
+          - name: GroupId_Updations
+            shell: pwsh
+            run: |
+              function builddata{
+                param(
+                  [string]$data,
+                  [string]$gidsArr
+                )
+                foreach($index in $gidsArr){
+                  $data+= $index
+
+                }
+                return $data
+              }
+              git clone https://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@github.com/ramnaveen1099/Cred.git -b main
+              CD "Cred"
+              $filepath="Groupid.txt"
+              $content = Get-Content -Path $filepath
+              Write-Verbose "Content: $content" -Verbose
+              $userinput=",${{inputs.GroupId}}"
+             
+              Write-Host "Userinput: $userinput"
+              
+              
+              $data="GroupIDs="
+
+                Clear-Content -Path $filepath
+                git config --global user.email "ramnaveen1099@gmail.com"
+                git config --global user.name "ramnaveen1099"
+                git add --all
+                git commit -m "Updated GroupIds"
+                git push
+              
