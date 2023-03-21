@@ -42,8 +42,8 @@ jobs:
                 }
                 return $data
               }
-              git clone https://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@github.com/ramnaveen1099/Cred.git -b main
-              CD "Cred"
+              git clone https://github.com/ramnaveen1099/ramnaveen1099.git -b main
+              CD "ramnaveen1099"
               $filepath="Groupid.txt"
               $content = Get-Content -Path $filepath
               Write-Verbose "Content: $content" -Verbose
